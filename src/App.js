@@ -1,24 +1,26 @@
 import logo from './logo.svg';
+import React, { Component, useState } from "react";
 import './App.css';
+import ResultViewPanel from './container/ResultViewPanel/ResultViewPanel';
+import ControlPanel from './container/ControlPanel/ControlPanel';
 
-function App() {
+const App = () => {
+  const [threshold, setThreshold] = useState(5);
+  const [dataGroup, setDataGroup] = useState("gender");
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <div className='main-container'>
+        <ControlPanel 
+            setDataGroup = {setDataGroup}
+            setThreshold = {setThreshold}
+            threshold = {threshold}/>
+        <ResultViewPanel
+            threshold = {threshold}
+            dataGroup = {dataGroup}/>        
+      </div>
+    </React.Fragment>
   );
 }
 

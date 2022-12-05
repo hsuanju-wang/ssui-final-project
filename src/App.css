@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.main-container{
+  display: flex;
+  height: 100%;
+}
+
+body > #root > div {
+  height: 100vh;
+}
