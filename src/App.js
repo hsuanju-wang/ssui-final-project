@@ -2,6 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
 import ListItem from "./ListItem";
+import { Routes, Route  } from "react-router-dom";
+import Edit from './Edit';
+import Preview from './TestMode';
+import Login from './Login';
+
+
+import Header from './Header'
+
 
 let globalItemCount = 0;
 
@@ -45,75 +53,6 @@ function App() {
 
 
 
-
-
-
-
-  // const [questionName, setQuestionName] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [optionA, setOptionA] = useState("");
-  // const [optionB, setOptionB] = useState("");
-  // const [optionC, setOptionC] = useState("");
-  // const [optionD, setOptionD] = useState("");
-  // const [answer, setAnswer] = useState("");
-  // const [hint, setHint] = useState("");
-  // const [feedback, setFeedback] = useState("");
-
-
-
-  // const [currentQuestion, setCurrentQuestion] = useState({})
-
-  // function updateQuestionName(e) {
-  //   setQuestionName(e.currentTarget.value);
-  // }
-
-  // function updateDescription(e) {
-  //   setDescription(e.currentTarget.value);
-  // }
-
-  // function updateOptionA(e) {
-  //   setOptionA(e.currentTarget.value);
-  // }
-
-  // function updateOptionB(e) {
-  //   setOptionB(e.currentTarget.value);
-  // }
-
-  // function updateOptionC(e) {
-  //   setOptionC(e.currentTarget.value);
-  // }
-
-  // function updateOptionD(e) {
-  //   setOptionD(e.currentTarget.value);
-  // }
-
-  // function updateAnswer(e) {
-  //   setAnswer(e.currentTarget.value);
-  // }
-
-  // function updateHint(e) {
-  //   setHint(e.currentTarget.value);
-  // }
-
-  // function updateFeedback(e) {
-  //   setFeedback(e.currentTarget.value);
-  // }
-
-  // function saveQuestion(id){
-  //   setCurrentQuestion({ name: questionName, description: description, optionA: optionA, optionB: optionB, optionC: optionC, optionD: optionD, answer: answer, hint: hint,feedback: feedback })
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
   function createNewQuestion() {
     globalItemCount++;
     setListItems([
@@ -139,20 +78,7 @@ function App() {
         key={item.id}
         deleteItem={deleteItem}
         updateCurrentQuestion={updateCurrentQuestion}
-        // updateQuestionName={updateQuestionName}
-        // updateDescription={updateDescription}
-
-        // updateOptionA={updateOptionA}
-        // updateOptionB={updateOptionB}
-        // updateOptionC={updateOptionC}
-        // updateOptionD={updateOptionD}
-
-        // updateAnswer={updateAnswer}
-        // updateHint={updateHint}
-        // updateFeedback={updateFeedback}
-
-        // saveQuestion={saveQuestion}
-
+ 
         
 
       />
@@ -163,6 +89,17 @@ function App() {
 
   return (
     <div className="App">
+
+    <Header />
+
+    <Routes>
+          <Route path='/' element={<Edit/>}>  </Route>
+          <Route path='/preview' element={<Preview/>}>  </Route>
+
+          {/* <Route path='/preview/' element={<Preview />}>  </Route> */}
+          <Route path='/login/' element={<Login />}> </Route>
+    </Routes>
+
       <h1>My Question Set</h1>
       {/* <input onChange={updateNewQuestion} type="text"></input> */}
       {questionSetComponents}
