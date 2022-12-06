@@ -1,0 +1,58 @@
+.resultPanel{
+    width: 60%;
+    /* border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black; */
+}
+.title-container{
+    justify-content: center;
+    display: flex;
+}
+
+.title-container h2{
+    margin-right: 10%;
+}
+
+.container{
+    display: flex;
+    margin: 5%;
+}
+
+.title-box{
+    width: 20%;
+}
+
+.title-box h2{
+    margin-bottom: 0;
+}
+.title-box span{
+    font-size: smaller;
+}
+
+.chart-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0% 5%;
+    width: 60%;
+}
+
+.legend{
+    display: flex;
+    margin-right: 10px;
+}
+
+.legendBar{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 30px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+#type1LegendBar{
+    background-color: rgba(255, 99, 132, 0.5);
+}
+
+#type2LegendBar{
+    background-color: rgba(53, 162, 235, 0.5);
+}

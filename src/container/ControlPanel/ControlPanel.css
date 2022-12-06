@@ -1,0 +1,16 @@
+.control-panel{
+    width: 20%;
+    border: 2px solid rgb(75, 75, 75);
+    background-color: rgb(75, 75, 75);
+    color: white;
+    
+    padding: 20px 30px;
+}
+
+.threshold-box{
+    margin-top: 40px;
+}
+
+.thershold-bar{
+    width: 75%;
+}
