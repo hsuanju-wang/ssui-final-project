@@ -38,13 +38,6 @@
 }
 
 
-.navigation {
-  flex-direction: column;
-  width: 100%;
-}
-
-
-
 .main-container{
   display: flex;
   height: 100%;
@@ -52,4 +45,8 @@
 
 body > #root > div {
   height: 100vh;
+}
+
+.question-column{
+  width: 20%;
 }
