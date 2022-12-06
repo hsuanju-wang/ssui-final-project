@@ -73,7 +73,7 @@ export default function ListItem(props) {
     <input onChange={updateQuestionName} type="text"></input>
 
     <p>Description:</p>
-    <textarea rows="10" cols="80" onChange={updateDescription} type="text"></textarea>
+    <textarea rows="5" cols="30" onChange={updateDescription} type="text"></textarea>
     <div>  
         <p>Options</p> 
 
@@ -107,12 +107,12 @@ export default function ListItem(props) {
 
     <div>
         <p>Hint</p>
-        <textarea rows="5" cols="80" onChange={updateHint} type="text"></textarea>
+        <textarea rows="5" cols="30" onChange={updateHint} type="text"></textarea>
     </div>
 
     <div>
         <p>Explanatory Feedback</p>
-        <textarea rows="5" cols="80" onChange={updateFeedback} type="text"></textarea>
+        <textarea rows="5" cols="30" onChange={updateFeedback} type="text"></textarea>
     </div>
 
 
