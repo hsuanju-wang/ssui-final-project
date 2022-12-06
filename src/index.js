@@ -5,6 +5,27 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBHT9BTilYml1phEUt88tQII4TcCNS-6vg",
+  authDomain: "perspectiveai-70565.firebaseapp.com",
+  projectId: "perspectiveai-70565",
+  storageBucket: "perspectiveai-70565.appspot.com",
+  messagingSenderId: "24020631436",
+  appId: "1:24020631436:web:ff586f85d6a2bc596ae0a9",
+  measurementId: "G-JKD9X5S4DS"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

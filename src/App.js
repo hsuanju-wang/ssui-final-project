@@ -1,22 +1,28 @@
 import logo from './logo.svg';
-import React, { Component, useState } from "react";
 import './App.css';
-<<<<<<< HEAD
 import { useState } from "react";
 import ListItem from "./ListItem";
 import { Routes, Route  } from "react-router-dom";
 import Edit from './Edit';
 import Preview from './TestMode';
 import Login from './Login';
+import './App.css';
+import ResultViewPanel from './container/ResultViewPanel/ResultViewPanel';
+import ControlPanel from './container/ControlPanel/ControlPanel';
 
 
 import Header from './Header'
+
 
 
 let globalItemCount = 0;
 
 
 function App() {
+
+  const [threshold, setThreshold] = useState(5);
+  const [dataGroup, setDataGroup] = useState("gender");
+
 
 
 
@@ -94,6 +100,18 @@ function App() {
 
     <Header />
 
+      <div className='main-container'>
+        <ControlPanel 
+            setDataGroup = {setDataGroup}
+            setThreshold = {setThreshold}
+            threshold = {threshold}/>
+        <ResultViewPanel
+            threshold = {threshold}
+            dataGroup = {dataGroup}/>        
+      </div>
+
+
+
     <Routes>
           <Route path='/' element={<Edit/>}>  </Route>
           <Route path='/preview' element={<Preview/>}>  </Route>
@@ -110,28 +128,6 @@ function App() {
       
 
     </div>
-=======
-import ResultViewPanel from './container/ResultViewPanel/ResultViewPanel';
-import ControlPanel from './container/ControlPanel/ControlPanel';
-
-const App = () => {
-  const [threshold, setThreshold] = useState(5);
-  const [dataGroup, setDataGroup] = useState("gender");
-
-  
-  return (
-    <React.Fragment>
-      <div className='main-container'>
-        <ControlPanel 
-            setDataGroup = {setDataGroup}
-            setThreshold = {setThreshold}
-            threshold = {threshold}/>
-        <ResultViewPanel
-            threshold = {threshold}
-            dataGroup = {dataGroup}/>        
-      </div>
-    </React.Fragment>
->>>>>>> 64b903fe4de39a45e14ba9bf95e6f942116d793c
   );
 }
 
