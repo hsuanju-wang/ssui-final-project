@@ -10,18 +10,13 @@ import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
 import "firebase/compat/firestore"
 
-import ListItem from "./ListItem";
+import Login from './container/Login/Login';
+import Header from './container/Header/Header';
+
 import Edit from './Edit';
 import Preview from './TestMode';
-import Login from './container/Login/Login';
-import ResultViewPanel from './container/ResultViewPanel/ResultViewPanel';
-import ControlPanel from './container/ControlPanel/ControlPanel';
-import Header from './container/Header/Header'
-
-
-
-let globalItemCount = 0;
-
+import TeacherPage from './container/TeacherPage/TeacherPage';
+import StudentPage from './container/StudentPage/StudentPage'
 
 function App(props) {
 
@@ -46,116 +41,44 @@ function App(props) {
   function logOut(){
     signOut(auth).then(() => {
       setCurrentUser(undefined);
+      setCurrentUserStatus(undefined);
     }).catch((error) => {
       // An error happened.
     });
   }
   //End Of Login =============================
 
-
-  // Data Visualization =================
-  const [threshold, setThreshold] = useState(5);
-  const [dataGroup, setDataGroup] = useState("gender");
-  // End of Data Visualization =============
-
-  // Question set ======================
-  const [listItems, setListItems] = useState([
-    { name: "Question1", type: "", id: 0 }
-  ]);
-  const [questionSet, setQuestionSet] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState({});
-
-  function updateCurrentQuestion(question){
-    setCurrentQuestion(question);
-    let tempSet = [...questionSet];
-    var questionIndex = tempSet.findIndex((q) => q.id === question.id)
-    console.log(questionIndex);
-    if (questionIndex == -1){
-      tempSet.push(question)
-    } else {
-      tempSet[questionIndex] = question
-    }
-    console.log(tempSet)
-    setQuestionSet(tempSet)
-  }
-
-  function createNewQuestion() {
-    globalItemCount++;
-    setListItems([
-      ...listItems,
-      { name: "", type: "", id: globalItemCount }
-    ]);
-  }
-
-  function deleteItem(id) {
-    let tempListItems = [...listItems];
-    tempListItems.splice(
-      tempListItems.findIndex((d) => d.id === id),
-      1
-    );
-    setListItems(tempListItems);
-  }
-
-  const questionSetComponents = listItems.map((item) => {
-    return (
-      <ListItem
-        // text={item.name}
-        id={item.id}
-        key={item.id}
-        deleteItem={deleteItem}
-        updateCurrentQuestion={updateCurrentQuestion}
-      />
-    );
-  });
-  //End of Question set ======================
-
   return (
     <div className="App">
 
-      <Header />
-      {/* If the user does not login -----------------------------------------------------*/}
-      {currentUser === undefined &&
-        <Login 
-          logIn = {logIn}
-          logOut = {logOut} 
-          currentUser = {currentUser}
-          currentUserStatus = {currentUserStatus}
-          setCurrentUserStatus = {setCurrentUserStatus}/>
-      }{/* End If the user does not login-------*/}
-
-      {/* If the user is teacher ---------------------------------------------------------*/}
-      { currentUser !== undefined &&  currentUserStatus === 'teacher' &&
-        <div className='main-container'>
-          <div className='question-column'>
-            <h1>My Question Set</h1>
-            {/* <input onChange={updateNewQuestion} type="text"></input> */}
-            {questionSetComponents}
-            <button onClick={createNewQuestion}>Add Multiple Choice Question</button>
-          </div>
-          <ControlPanel 
-              setDataGroup = {setDataGroup}
-              setThreshold = {setThreshold}
-              threshold = {threshold}/>
-          <ResultViewPanel
-              threshold = {threshold}
-              dataGroup = {dataGroup}/>        
-        </div>
-      } {/* End If the user is teacher -------*/}
-      {/* If the user is student ---------------------------------------------------------*/}
-      { currentUser !== undefined &&  currentUserStatus === 'student' &&
-        <div className='main-container'>
-          <ControlPanel 
-              setDataGroup = {setDataGroup}
-              setThreshold = {setThreshold}
-              threshold = {threshold}/>
-          <ResultViewPanel
-              threshold = {threshold}
-              dataGroup = {dataGroup}/>        
-        </div>
-      } {/* End If the user is student -------*/}
+      <Header currentUserStatus = {currentUserStatus}/>
       <Routes>
             {/* <Route path='/' element={<Edit/>}>  </Route> */}
-            <Route path='/preview' element={<Preview/>}>  </Route>
+            <Route path='/preview' element={<Preview/>}> </Route>
+            <Route path='/login' 
+                   element={<Login
+                                logIn = {logIn}
+                                logOut = {logOut} 
+                                currentUser = {currentUser}
+                                currentUserStatus = {currentUserStatus}
+                                setCurrentUserStatus = {setCurrentUserStatus}/>}> </Route>
+
+            { currentUser === undefined && 
+                <Route path='/' 
+                       element={<Login
+                                  logIn = {logIn}
+                                  logOut = {logOut} 
+                                  currentUser = {currentUser}
+                                  currentUserStatus = {currentUserStatus}
+                                  setCurrentUserStatus = {setCurrentUserStatus}/>}> </Route>
+            }
+
+            { currentUser !== undefined && currentUserStatus === 'teacher' &&
+                <Route path='/' element={<TeacherPage/>}> </Route>
+            }
+            { currentUser !== undefined && currentUserStatus === 'student' &&
+                <Route path='/' element={<StudentPage/>}> </Route>
+            }
       </Routes>
     </div>
   );

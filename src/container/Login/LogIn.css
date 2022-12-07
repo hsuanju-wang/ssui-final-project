@@ -4,8 +4,7 @@
 }
 
 .logInBtn{
-    width: 200px;
-    padding: 3px 2px;
+    padding: 6px 15px;
     background-color: white;
     border: none;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -16,7 +15,7 @@
 }
 
 .logInBtn img{
-    width : 20%;
+    width : 40px;
     display: inline;
     vertical-align: middle;
 }

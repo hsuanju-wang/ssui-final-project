@@ -1,0 +1,9 @@
+.main-container{
+    display: flex;
+    height: 100%;
+}
+  
+  
+.question-column{
+width: 20%;
+}

@@ -5,7 +5,7 @@
 
 .navigation {
     flex-direction: column;
-    width: 70%;
+    width: 80%;
     padding: 30px;
     text-align: right;
 }
@@ -28,6 +28,7 @@
     padding: 0px;
     text-decoration: none;
     font-weight: bold;
+    margin: 0 10px;
 }
 
 .navLink:hover{
