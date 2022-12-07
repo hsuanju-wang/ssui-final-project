@@ -4,7 +4,7 @@ import './Header.css';
 export default function Header(props){
     return (
         <div className="header">
-            <h1>Perspective AI</h1>
+            <h2>Perspective AI</h2>
             { props.currentUserStatus === 'teacher' &&
                 <div className="navigation">
                     <Link className='navLink' to="/"><div className=''> Editor </div></Link>

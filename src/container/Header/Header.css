@@ -1,4 +1,36 @@
+@font-face {
+    font-family: HeaderTitleFont;
+    src: url('../../assets/font/Acme-Regular.ttf');
+}
+
 .navigation {
     flex-direction: column;
+    width: 70%;
+    padding: 30px;
+    text-align: right;
+}
+
+.header {
+    display: flex;
+    /* flex-direction: row; */
     width: 100%;
-  }
+    background-color: black;
+    color: white;
+    padding-left: 5%;
+}
+
+.header h2{
+    font-family: HeaderTitleFont;
+}
+
+.navLink {
+    color: white;
+    padding: 0px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navLink:hover{
+    color: rgb(183, 183, 183);
+    transition: 0.3s;
+}

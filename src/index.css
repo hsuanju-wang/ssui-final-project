@@ -12,18 +12,6 @@ code {
     monospace;
 }
 
-
-.header {
-  display: flex;
-  /* flex-direction: row; */
-  width: 100%;
-  background-color: black;
-  color: white;
-  text-align: left;
-
-}
-
-
 .navigation {
   padding: 30px;
   /* display: flex;
@@ -31,13 +19,6 @@ code {
   flex-direction: row; */
   /* justify-content: flex-end;  */
 }
-
-.navLink {
-  color: white;
-  padding: 0px;
-
-}
-
 
 /* 
 .link {

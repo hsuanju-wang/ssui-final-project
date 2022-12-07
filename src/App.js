@@ -119,7 +119,8 @@ function App(props) {
           logIn = {logIn}
           logOut = {logOut} 
           currentUser = {currentUser}
-          setCurrentStatus = {setCurrentUserStatus}/>
+          currentUserStatus = {currentUserStatus}
+          setCurrentUserStatus = {setCurrentUserStatus}/>
       }{/* End If the user does not login-------*/}
 
       {/* If the user is teacher ---------------------------------------------------------*/}
