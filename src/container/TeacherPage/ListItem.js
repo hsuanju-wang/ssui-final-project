@@ -56,7 +56,7 @@ export default function ListItem(props) {
   }
 
   function saveQuestion(){
-    const questionInfo = { id: props.id, name: questionName, description: description, optionA: optionA, optionB: optionB, optionC: optionC, optionD: optionD, answer: answer, hint: hint,feedback: feedback }
+    const questionInfo = { questionSetName: props.questionSetName, id: props.id, name: questionName, description: description, optionA: optionA, optionB: optionB, optionC: optionC, optionD: optionD, answer: answer, hint: hint,feedback: feedback }
     props.updateCurrentQuestion(questionInfo)
   }
 
