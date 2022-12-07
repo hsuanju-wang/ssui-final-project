@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
-import { Routes, Route  } from "react-router-dom";
+import { Routes, Route, useNavigate  } from "react-router-dom";
 
 import { getAuth, signInWithPopup,signOut, GoogleAuthProvider} from "firebase/auth";
 import { collection, getDocs, getFirestore, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
@@ -28,11 +28,14 @@ function App(props) {
   const auth = getAuth(props.app);
   const provider = new GoogleAuthProvider();
 
+  const navigate = useNavigate();
+
   // LogIn ===================================
   function logIn(){
     signInWithPopup(auth, provider)
       .then((result) => {
         setCurrentUser(auth.currentUser);
+        navigate('/');
         // to do
       })
       .catch((error)=> {})
