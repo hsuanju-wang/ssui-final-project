@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Routes, Route, useNavigate  } from "react-router-dom";
 
 import { getAuth, signInWithPopup,signOut, GoogleAuthProvider} from "firebase/auth";
@@ -21,9 +21,11 @@ import AnswerQuestion from './container/StudentPage/AnswerQuestions/AnswerQuesti
 import Result from './container/StudentPage/Result/Result';
 
 function App(props) {
-
   const [currentUser, setCurrentUser] = useState(undefined); 
   const [currentUserStatus, setCurrentUserStatus] = useState(undefined); // teacher or student
+
+  const [studentResult, setStudentResult] = useState(undefined);
+  const [newStudentAnswer, setNewStudentAnswer] = useState([]);  
 
   // Backend stuff
   const db = getFirestore(props.app);
@@ -31,6 +33,21 @@ function App(props) {
   const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("run useEffect");
+    if(currentUserStatus === 'student'){
+      getStudentResult().then((d) => {
+        let resultItem = d.docs.map((d) =>{
+          const data = d.data();
+          const id = d.id;
+          return { id, ...data };
+        });
+        console.log(resultItem);
+        setStudentResult(resultItem);
+      });
+    }
+  }, [currentUser, newStudentAnswer]);
 
   // LogIn ===================================
   function logIn(){
@@ -53,8 +70,11 @@ function App(props) {
   }
   //End Of Login =============================
 
-
-  //Instructor Publish QuestionSet
+  async function getStudentResult(){
+    const col = collection(db, "StudentAnswers");
+    const q = query(col, where("studentId", "==", currentUser.uid));
+    return await getDocs(q);
+  }
 
   return (
     <div className="App">
@@ -63,8 +83,11 @@ function App(props) {
       <Routes>
             {/* <Route path='/' element={<Edit/>}>  </Route> */}
             <Route path='/preview' element={<Preview/>}> </Route>
-            <Route path='/result' element={<Result/>}> </Route>
-            <Route path='/answerQuestion' element={<AnswerQuestion db={db} currentUser={currentUser}/>}> </Route>
+            <Route path='/result' element={<Result studentResult={studentResult}/>}> </Route>
+            <Route path='/answerQuestion' element={<AnswerQuestion 
+                                                        db={db} 
+                                                        currentUser={currentUser} 
+                                                        setNewStudentAnswer={setNewStudentAnswer}/>}> </Route>
             <Route path='/login' 
                    element={<Login
                                 logIn = {logIn}

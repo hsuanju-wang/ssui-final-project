@@ -15,14 +15,16 @@ const AnswerQuestion = (props) => {
   const location = useLocation();
   let dbRef = doc(collection(props.db, "StudentAnswers")); 
 
-  async function uploadAnswerToDb(answer, score){
+  async function uploadAnswerToDb(answer,score){
     let newStudentAnswer = {
         answer: answer,
         questionId: location.state.selectedQuestion.id,
         score: score,
         studentId: props.currentUser.uid,
-        studentName:props.currentUser.displayName
+        studentName:props.currentUser.displayName,
+        teacherName: location.state.selectedQuestion.teacherName
     }
+    props.setNewStudentAnswer(newStudentAnswer);
     await setDoc(dbRef, newStudentAnswer);
   }
 
@@ -33,7 +35,9 @@ const AnswerQuestion = (props) => {
             currentQuestionIndex={currentQuestionIndex}
             setCurrentQuestionIndex={setCurrentQuestionIndex}
             currentQuestionLength={location.state.selectedQuestion.questions.length}
-            uploadAnswerToDb ={uploadAnswerToDb}/>
+            uploadAnswerToDb ={uploadAnswerToDb}
+            studentAnswer={props.studentAnswer}
+            setStudentAnswer={props.setStudentAnswer}/>
         <ControlPanel 
             setDataGroup = {setDataGroup}
             setThreshold = {setThreshold}

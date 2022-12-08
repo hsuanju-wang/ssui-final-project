@@ -5,7 +5,7 @@ import './QuestionPanel.css'
 
 const QuestionPanel = (props) => {
   const [clickedBtn, setClickedBtn] = useState(undefined);
-  const [studentAnswer, setStudentAnswer] = useState([undefined, undefined, undefined]);
+  const [studentAnswer, setStudentAnswer] = useState([]);
   const [studentAnswerCorrect, setStudentAnswerCorrect] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
@@ -41,7 +41,7 @@ const QuestionPanel = (props) => {
         disableBtnHoverEffect();
 
         let newStudentAnswer = studentAnswer;
-        newStudentAnswer[props.currentQuestionIndex] = clickedBtn.value;
+        newStudentAnswer.push(clickedBtn.value);
         setStudentAnswer(newStudentAnswer);
 
         checkAnswer(clickedBtn.value);

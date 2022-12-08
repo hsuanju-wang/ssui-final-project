@@ -1,0 +1,15 @@
+.result-container{
+    padding: 2%;
+}
+
+.result-box{
+    width: 50%;
+    height: 60px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.179);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-top: 2%;
+}
