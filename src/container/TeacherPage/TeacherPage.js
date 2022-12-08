@@ -82,12 +82,18 @@ const TeacherPage = (props) => {
   }
 
   function publishQuestionSet(){
-    addDoc(collection(props.db, "anchors"), {
+    addDoc(collection(props.db, "Questions"), {
       questionSet: questionSet,
-      user: props.currentUser.displayName
+      teacherId: props.currentUser.uid,
+      teacherName: props.currentUser.displayName
       
     });
+
+    updateDoc()
+
+
     console.log("finish!")
+    console.log(props.currentUser.uid)
 
   }
 
