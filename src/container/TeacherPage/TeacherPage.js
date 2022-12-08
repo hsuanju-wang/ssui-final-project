@@ -212,8 +212,7 @@ const TeacherPage = (props) => {
                   <ResultViewPanel
                       threshold = {threshold}
                       dataGroup = {dataGroup}
-                      width= {"70%"}/>                   
-  
+                      width= {"80%"}/>                   
               </div>
 
           }

@@ -79,7 +79,7 @@ function App(props) {
   return (
     <div className="App">
 
-      <Header currentUserStatus = {currentUserStatus}/>
+      <Header currentUserStatus = {currentUserStatus} currentUser = {currentUser}/>
       <Routes>
             {/* <Route path='/' element={<Edit/>}>  </Route> */}
             <Route path='/preview' element={<Preview/>}> </Route>
