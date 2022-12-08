@@ -3,6 +3,7 @@ import { Routes, Route  } from "react-router-dom";
 import ListItem from "./ListItem";
 import ResultViewPanel from '../ResultViewPanel/ResultViewPanel';
 import ControlPanel from '../ControlPanel/ControlPanel';
+import AboutCompas from '../AboutCompas/AboutCompas'
 
 import { getAuth, signInWithPopup,signOut, GoogleAuthProvider} from "firebase/auth";
 import { collection, getDocs, getFirestore, addDoc, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
@@ -136,9 +137,10 @@ const TeacherPage = (props) => {
             setDataGroup = {setDataGroup}
             setThreshold = {setThreshold}
             threshold = {threshold}/>
-        <ResultViewPanel
+          <AboutCompas/>
+        {/* <ResultViewPanel
             threshold = {threshold}
-            dataGroup = {dataGroup}/>        
+            dataGroup = {dataGroup}/>         */}
   </div>
   );
 }

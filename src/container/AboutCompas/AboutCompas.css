@@ -1,0 +1,29 @@
+.About {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+
+
+
+.how {
+    width: 40%;
+    padding: 30px;
+}
+
+.AboutCompas {
+    width: 40%;
+    padding: 30px;
+}
+
+.prediction {
+    width: 40%;
+    padding: 30px;
+}
+
+.half {
+    display: flex;
+    flex-direction: row;
+}
