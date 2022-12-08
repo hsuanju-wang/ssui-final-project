@@ -29,7 +29,7 @@ const ResultViewPanel = (props) => {
     getCsvData(GenderData).then(result => {
       result.data.shift();
       setGenderData(result.data);
-      console.log(result.data);
+      //console.log(result.data);
     });
 
     getCsvData(RaceData).then(result => {
@@ -69,8 +69,7 @@ const ResultViewPanel = (props) => {
               }
             </div>
             { genderData !== undefined && props.dataGroup === "gender" &&
-              <div className="chart-container">
-                {console.log(props.threshold)}
+              <div className="chart-container">console.log(d);
                 <BarChart
                     label = {["TP"]} 
                     data1 = {[genderData[props.threshold-1][6]]}

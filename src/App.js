@@ -16,7 +16,9 @@ import Header from './container/Header/Header';
 import Edit from './Edit';
 import Preview from './TestMode';
 import TeacherPage from './container/TeacherPage/TeacherPage';
-import StudentPage from './container/StudentPage/StudentPage'
+import StudentPage from './container/StudentPage/StudentPage';
+import AnswerQuestion from './container/StudentPage/AnswerQuestions/AnswerQuestion';
+import Result from './container/StudentPage/Result/Result';
 
 function App(props) {
 
@@ -58,6 +60,8 @@ function App(props) {
       <Routes>
             {/* <Route path='/' element={<Edit/>}>  </Route> */}
             <Route path='/preview' element={<Preview/>}> </Route>
+            <Route path='/result' element={<Result/>}> </Route>
+            <Route path='/answerQuestion' element={<AnswerQuestion db={db} currentUser={currentUser}/>}> </Route>
             <Route path='/login' 
                    element={<Login
                                 logIn = {logIn}
@@ -80,7 +84,7 @@ function App(props) {
                 <Route path='/' element={<TeacherPage/>}> </Route>
             }
             { currentUser !== undefined && currentUserStatus === 'student' &&
-                <Route path='/' element={<StudentPage/>}> </Route>
+                <Route path='/' element={<StudentPage db={db}/>}> </Route>
             }
       </Routes>
     </div>

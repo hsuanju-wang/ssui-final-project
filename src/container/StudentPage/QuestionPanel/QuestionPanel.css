@@ -1,0 +1,132 @@
+@font-face{
+    font-family: questionFont;
+    src: url('../../../assets/font/Lato/Lato-Regular.ttf');
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: questionFont;
+    src: url('../../../assets/font/Lato/Lato-Bold.ttf');
+    font-weight: bold;
+}
+
+
+.question-panel{
+    width: 25%;
+    background-color:white;
+    color: black;
+    padding: 20px 30px;
+    font-family: questionFont;
+}
+
+.question-panel h2{
+    margin: 0;
+}
+
+.question-text{
+    text-align: left;
+    border: 1px rgb(238, 238, 238) solid;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.101);
+    padding: 15px;
+    font-weight: normal;
+}
+
+.hint{
+    text-align: left;
+    border: 1px rgb(238, 238, 238) solid;
+    box-shadow: 0 1px 2px  rgba(0, 0, 0, 0.101);
+    font-weight: normal;
+    font-size: 12px;
+    padding: 8px;
+}
+
+
+.answer-options{
+    text-align: left;
+}
+
+.unSelectedBtn{
+    background-color: rgb(235, 235, 235);
+    margin-top: 10px;
+    width: 100%;
+    padding: 4%;
+    font-size: 14px;
+    border: none;
+}
+
+.hoverBtn:hover{
+    background-color: rgb(198, 198, 198);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.101);
+    cursor: pointer;
+}
+
+.selectedBtn{
+    background-color: rgb(198, 198, 198);
+    margin-top: 10px;
+    width: 100%;
+    padding: 4%;
+    font-size: 14px;
+    border: none;
+}
+
+.correctBtn{
+    background-color: rgb(71, 255, 47);
+    color: rgb(32, 139, 30);
+    margin-top: 10px;
+    width: 100%;
+    padding: 4%;
+    font-size: 14px;
+    border: none;
+}
+
+.wrongBtn{
+    background-color: rgb(255, 105, 105);
+    color: rgb(139, 60, 60);
+    margin-top: 10px;
+    width: 100%;
+    padding: 4%;
+    font-size: 14px;
+    border: none;
+}
+
+.submitBtn{
+    background-color: rgb(0, 157, 255);
+    color: white;
+    margin-top: 10px;
+    width: 50%;
+    padding: 4%;
+    font-size: 14px;
+    border: none;
+}
+
+.submitBtn:hover{
+    background-color: rgb(113, 201, 255);
+    cursor: pointer;
+}
+
+.nextBtn{
+    background-color: rgb(235, 235, 235);
+    color: black;
+    margin-top: 10px;
+    width: 50%;
+    padding: 4%;
+    font-size: 14px;
+    border: none;
+}
+
+.nextBtn:hover{
+    background-color: rgb(198, 198, 198);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.101);
+    cursor: pointer;   
+}
+
+
+.greyOutBtn{
+    background-color: rgb(212, 212, 212);
+    color: white;
+    margin-top: 10px;
+    width: 50%;
+    padding: 4%;
+    font-size: 14px;
+    border: none;   
+}

@@ -1,29 +1,55 @@
-import { useState } from "react";
-import { Routes, Route  } from "react-router-dom";
-import ResultViewPanel from '../ResultViewPanel/ResultViewPanel';
-import ControlPanel from '../ControlPanel/ControlPanel';
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate  } from "react-router-dom";
+import { collection, getDocs, getFirestore, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
 
 import './StudentPage.css'
 
-let globalItemCount = 0;
-
 const StudentPage = (props) => {
-  // Data Visualization =================
-  const [threshold, setThreshold] = useState(5);
-  const [dataGroup, setDataGroup] = useState("gender");
-  // End of Data Visualization =============
+  const navigate = useNavigate();
+  const [questions, setQuestions] = useState(undefined);
 
+  function startBtnClicked(selectedQuestion){
+    console.log(selectedQuestion);
+    navigate('/answerQuestion', {
+      state: {
+        selectedQuestion: selectedQuestion
+      }
+    });
+  }
+  async function getAllQuestionsFromDb(){
+    return await getDocs(collection(props.db, "Questions"));
+  }
+
+  useEffect(() => {
+    getAllQuestionsFromDb().then((d) => {
+      let questionItems = d.docs.map((d) =>{
+      const data = d.data();
+      const id = d.id;
+      return { id, ...data };
+    });
+    console.log(questionItems);
+    setQuestions(questionItems);
+  })
+  }, []);
 
   return(
-    <div className='main-container'>
-        <ControlPanel 
-            setDataGroup = {setDataGroup}
-            setThreshold = {setThreshold}
-            threshold = {threshold}/>
-        <ResultViewPanel
-            threshold = {threshold}
-            dataGroup = {dataGroup}/>        
-  </div>
+    <div className="student-home">
+      <h1>Select the question set you want to take</h1>
+
+      { questions !== undefined && questions.map((q, index) => {
+        return(
+          <div className="question-container">
+            <div className="question-box">
+              <h2>Question set name // todo</h2>
+              <h3>Instructor: {q.teacherName} </h3>
+              <h3>{q.questions.length} Questions</h3>
+              <button onClick={() => startBtnClicked(q)}>Start</button>
+            </div>
+          </div> 
+        )
+      })}     
+    </div>
+
   );
 }
 

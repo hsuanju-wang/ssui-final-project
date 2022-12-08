@@ -14,8 +14,8 @@ export default function Header(props){
             }
             { props.currentUserStatus === 'student' &&
                 <div className="navigation">
-                    <Link className='navLink' to="/">Editor</Link>
-                    <Link className='navLink' to="/preview/"> Preview </Link>
+                    <Link className='navLink' to="/">Home</Link>
+                    <Link className='navLink' to="/Result/"> Result</Link>
                     <Link className='navLink' to="/login/"> LogOut </Link> 
                 </div>
             }
