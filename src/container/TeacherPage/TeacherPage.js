@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Routes, Route  } from "react-router-dom";
 import ListItem from "./ListItem";
 import ResultViewPanel from '../ResultViewPanel/ResultViewPanel';
@@ -14,14 +14,7 @@ import "firebase/compat/firestore"
 
 import './TeacherPage.css'
 
-let globalItemCount = 0;
-
 const TeacherPage = (props) => {
-
-
-
-
-
 
   // Data Visualization =================
   const [threshold, setThreshold] = useState(5);
@@ -29,115 +22,202 @@ const TeacherPage = (props) => {
   // End of Data Visualization =============
 
   // Question set ======================
-  const [listItems, setListItems] = useState([
-    { name: "Question1", type: "", id: 0 }
-  ]);
+  // const [listItems, setListItems] = useState([
+  //   { name: "Question1", type: "", id: 0 }
+  // ]);
+  // const [questionSetName, setQuestionSetName] = useState();
 
-  const [questionSetName, setQuestionSetName] = useState();
-
-  const [questionSet, setQuestionSet] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState({});
-
-  function updateCurrentQuestion(question){
-    setCurrentQuestion(question);
-    let tempSet = [...questionSet];
-    var questionIndex = tempSet.findIndex((q) => q.id === question.id)
-    console.log(questionIndex);
-    if (questionIndex == -1){
-      tempSet.push(question)
-    } else {
-      tempSet[questionIndex] = question
+  const [questionSetName, setQuestionSetName] = useState(undefined);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [questions, setQuestions] = useState([
+    {
+      name:"",
+      questionText:"",
+      answer: "",
+      feedback: "",
+      hint:"",
+      option:["","","",""]    
     }
-    console.log(tempSet)
-    setQuestionSet(tempSet)
-  }
+  ]);
+  const [isEnd, setIsEnd] = useState(false);
+  const [isFront, setIsFront] = useState(false);
+  const [navBar, setNavBar] = useState("about");
+
+  // useEffect(() => {
+  //   console.log("run effect teacher");
+  //   createNewQuestion();
+  // }, []);
+
+  useEffect(() => {
+    checkNextBackBtn();
+  }, [currentQuestionIndex]);
+
+  // function updateCurrentQuestion(question){
+  //   setCurrentQuestion(question);
+  //   let tempSet = [...questionSet];
+  //   var questionIndex = tempSet.findIndex((q) => q.id === question.id)
+  //   console.log(questionIndex);
+  //   if (questionIndex == -1){
+  //     tempSet.push(question)
+  //   } else {
+  //     tempSet[questionIndex] = question
+  //   }
+  //   console.log(tempSet)
+  //   setQuestionSet(tempSet)
+  // }
 
   function createNewQuestion() {
-    globalItemCount++;
-    setListItems([
-      ...listItems,
-      { name: "", type: "", id: globalItemCount }
-    ]);
+    let newQuestion = {
+      name:"",
+      questionText:"",
+      answer: "",
+      feedback: "",
+      hint:"",
+      option:["","","",""]
+    }
+
+    let questionsTemp = questions;
+    questionsTemp.push(newQuestion);
+    console.log(questionsTemp);
+    setQuestions(questionsTemp);
   }
 
-  function deleteItem(id) {
-    let tempListItems = [...listItems];
-    tempListItems.splice(
-      tempListItems.findIndex((d) => d.id === id),
-      1
-    );
-    setListItems(tempListItems);
+  function addQustionBtnClicked(){
+    createNewQuestion();
+    setCurrentQuestionIndex(currentQuestionIndex+1);
+  }
+
+  function deleteItem(index) {
+    console.log("delete");
+    console.log(index);
+    let tempQuestions = questions;
+    tempQuestions.splice(index,1);
+    console.log(tempQuestions);
+
+    if(index === questions.length-1){
+      setCurrentQuestionIndex(currentQuestionIndex-1);
+    }
+    setQuestions(tempQuestions);
   }
 
   function updateQuestionSetName(e) {
     setQuestionSetName(e.currentTarget.value);
-
-    let tempSet = [...questionSet]
-    tempSet.forEach((q)=> {
-      q.questionSetName = questionSetName
-      // console.log(q)
-    })
-
-    // console.log(tempSet)
-    setQuestionSet(tempSet)
   }
 
-  function publishQuestionSet(){
-    addDoc(collection(props.db, "Questions"), {
-      questionSet: questionSet,
+  async function publishQuestionSet(){
+    let newDataSet = {
+      questionSetName: questionSetName,
+      questions: questions,
       teacherId: props.currentUser.uid,
       teacherName: props.currentUser.displayName
-      
-    });
+    };
+    let dbRef = doc(collection(props.db, "Questions")); 
 
-    updateDoc()
-
-
-    console.log("finish!")
-    console.log(props.currentUser.uid)
-
+    await setDoc(dbRef, newDataSet);
+    console.log("finish!");
+    console.log(newDataSet);
   }
 
+  function nextBtnClicked() {
+    setCurrentQuestionIndex(currentQuestionIndex+1);
+  }
 
+  function backBtnClicked() {
+    setCurrentQuestionIndex(currentQuestionIndex-1);
+  }
 
+  function checkNextBackBtn(){
+    if(currentQuestionIndex === questions.length-1){
+      setIsEnd(true);
+    }
+    else{
+      setIsEnd(false);
+    }
 
-  const questionSetComponents = listItems.map((item) => {
-    return (
-      <ListItem
-        // text={item.name}
-        id={item.id}
-        key={item.id}
-        deleteItem={deleteItem}
-        questionSetName={questionSetName}
-        updateCurrentQuestion={updateCurrentQuestion}
-      />
-    );
-  });
+    if(currentQuestionIndex === 0){
+      setIsFront(true);
+    }
+    else{
+      setIsFront(false);
+    }
+  }
+
+  function navBarChange(e){
+    setNavBar(e.currentTarget.value);
+  }
   //End of Question set ======================
 
   return(
     <div className='main-container'>
-        <div className='question-column'>
+        <div className='question-editor-container'>
 
-          <div className="questionSet">
+          <div className="questionSetTitle">
           {/* <h1>Publish Question Set :</h1> */}
             <h3>Your Question Set</h3>
-            <button onClick={publishQuestionSet} type="text">Publish Question Set</button>
-
-            <h5>Name of Question Set:</h5>
-            <input onChange={updateQuestionSetName} type="text"></input>
+            <button className='questionSetPublishBtn' onClick={()=> publishQuestionSet()} type="text">Publish Question Set</button>
+          </div>
+          <div className="editor-panel">
+            <div className="qustionSet-name-box">
+              <h5>Name of Question Set:</h5>
+              <input onChange={(e) => updateQuestionSetName(e)} type="text"></input>
+            </div>
+            <div className="total-question-box">
+              <h5>Total Questions: {currentQuestionIndex+1}/{questions.length}</h5>
+              <button className="addQuestion-btn" onClick={() => addQustionBtnClicked()}>Add Question</button>
+            </div>
+            <div className="question-edit-box">
+            {questions.map(
+              (q,index)=>{
+                return(
+                  <ListItem
+                      currentQuestionIndex={currentQuestionIndex}
+                      deleteItem={deleteItem}
+                      setQuestions={setQuestions}
+                      questions={questions}
+                      index={index}/>                    
+                )
+              }
+            )}
+ 
+         
+            </div>
+            <div className="nextBackBtn-box">
+              {isFront
+                ? <button className="noneBtn"></button>
+                : <button className="nextBackBtn" onClick={() => backBtnClicked()}>back</button>
+              }
+              {isEnd
+                ? <button className="noneBtn"></button>
+                : <button className="nextBackBtn" onClick={() => nextBtnClicked()}>next</button>
+              }
+            </div>
           </div>
 
-
-            {/* <input onChange={updateNewQuestion} type="text"></input> */}
-            {questionSetComponents}
-            <button onClick={createNewQuestion}>Add Multiple Choice Question</button>
         </div>
-        <ControlPanel 
-            setDataGroup = {setDataGroup}
-            setThreshold = {setThreshold}
-            threshold = {threshold}/>
-          <AboutCompas/>
+        <div className="explore-data-containter">
+          <div className="subNavBar">
+            <select name="cars" id="subNav" onChange={(e)=>navBarChange(e)}>
+              <option value="about">About</option>
+              <option value="dataExplore">Data explore</option>
+            </select>
+          </div>
+          { navBar === 'about'
+            ? <AboutCompas/>
+            : <div className="explore-data-page">
+                <ControlPanel 
+                    setDataGroup = {setDataGroup}
+                    setThreshold = {setThreshold}
+                    threshold = {threshold}
+                    width= {"25%"}/>                  
+                  <ResultViewPanel
+                      threshold = {threshold}
+                      dataGroup = {dataGroup}
+                      width= {"70%"}/>                   
+  
+              </div>
+
+          }
+        </div>
         {/* <ResultViewPanel
             threshold = {threshold}
             dataGroup = {dataGroup}/>         */}

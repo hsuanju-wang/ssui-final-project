@@ -24,7 +24,9 @@ const AboutCompas = () => {
                 <div className="block">
                     <h2>How COMPAS work?</h2>
                     <div className="">
-                    COMPAS system scores the defendant’s risk of re-offending on the scale of 1 to 10.  The risk score can help human judges in the  determine which defendants might re-offend or not.
+                        <p>
+                        COMPAS system scores the defendant’s risk of re-offending on the scale of 1 to 10.  The risk score can help human judges in the  determine which defendants might re-offend or not.
+                        </p>
                     <img src={howCompasWork}/> 
                     </div>
                 </div>
@@ -32,7 +34,7 @@ const AboutCompas = () => {
                 <div className="block">
                     <h2>How the Threshold Works</h2>
                     <div className="">
-                    Settiing the threshold can change the way the model predicts, With different thresholds, the same score can have different prediction results.<p></p>
+                        <p>Settiing the threshold can change the way the model predicts, With different thresholds, the same score can have different prediction results.</p>
                     <img src={threshold}/> 
                     </div>
                 </div>
@@ -44,7 +46,9 @@ const AboutCompas = () => {
                 <div className="prediction">
                     <h2>Type of Predictions</h2>
                     <div className="">
-                    Depends on what COMPAS predicts and whether the prediction is correct, there are 4 types of possible result: True Positives, False Positives, True Negatives, and False Negatives.
+                    <p>
+                        Depends on what COMPAS predicts and whether the prediction is correct, there are 4 types of possible result: True Positives, False Positives, True Negatives, and False Negatives.
+                    </p>
                     <p></p>
                     <p></p>
                     <img src={typofPrediction}/> 

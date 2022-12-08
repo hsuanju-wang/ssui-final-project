@@ -1,136 +1,183 @@
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
-
+import './ListItem.css'
 
 export default function ListItem(props) {
 
 
-  const [questionName, setQuestionName] = useState("");
-  const [description, setDescription] = useState("");
-  const [optionA, setOptionA] = useState("");
-  const [optionB, setOptionB] = useState("");
-  const [optionC, setOptionC] = useState("");
-  const [optionD, setOptionD] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [hint, setHint] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [questionInfo, setQuestionInfo] = useState({});
+  // const[questions[props.currentQuestionIndex], setquestions[props.currentQuestionIndex]] = useState([]);
+
+  // const [questionName, setQuestionName] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [optionA, setOptionA] = useState("");
+  // const [optionB, setOptionB] = useState("");
+  // const [optionC, setOptionC] = useState("");
+  // const [optionD, setOptionD] = useState("");
+  // const [answer, setAnswer] = useState("");
+  // const [hint, setHint] = useState("");
+  // const [feedback, setFeedback] = useState("");
+  // const [questionInfo, setQuestionInfo] = useState({});
 
 
 
 
   function updateQuestionName(e) {
-    setQuestionName(e.currentTarget.value);
+    let newQuestions = props.questions;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      name: e.currentTarget.value,
+    }
+    props.setQuestions(newQuestions);
   }
 
   function updateDescription(e) {
-    setDescription(e.currentTarget.value);
+    let newQuestions = props.questions;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      name: e.currentTarget.value,
+    }
+    props.setQuestions(newQuestions);
   }
 
   function updateOptionA(e) {
-    setOptionA(e.currentTarget.value);
+    let newQuestions = props.questions;
+    let newOption = props.questions.option;
+    newOption[0] = e.currentTarget.value;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      options: newOption,
+    }
+    props.setQuestions(newQuestions);
   }
 
   function updateOptionB(e) {
-    setOptionB(e.currentTarget.value);
+    let newQuestions = props.questions;
+    let newOption = props.questions.option;
+    newOption[1] = e.currentTarget.value;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      options: newOption,
+    }
+    props.setQuestions(newQuestions);
   }
 
   function updateOptionC(e) {
-    setOptionC(e.currentTarget.value);
+    let newQuestions = props.questions;
+    let newOption = props.questions.option;
+    newOption[2] = e.currentTarget.value;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      options: newOption,
+    }
+    props.setQuestions(newQuestions);
   }
 
   function updateOptionD(e) {
-    setOptionD(e.currentTarget.value);
+    let newQuestions = props.questions;
+    let newOption = props.questions.option;
+    newOption[3] = e.currentTarget.value;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      options: newOption,
+    }
+    props.setQuestions(newQuestions);
   }
 
   function updateAnswer(e) {
-    setAnswer(e.currentTarget.value);
+    let newQuestions = props.questions;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      answer: e.currentTarget.value,
+    }
+    props.setQuestions(newQuestions);
   }
 
   function updateHint(e) {
-    setHint(e.currentTarget.value);
+    let newQuestions = props.questions;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      hint: e.currentTarget.value,
+    }
+    props.setQuestions(newQuestions);
   }
 
   function updateFeedback(e) {
-    setFeedback(e.currentTarget.value);
+    let newQuestions = props.questions;
+    newQuestions[props.currentQuestionIndex] = {
+      ... newQuestions[props.currentQuestionIndex],
+      feedback: e.currentTarget.value,
+    }
+    props.setQuestions(newQuestions);
   }
 
-  function saveQuestion(){
-    const questionInfo = { questionSetName: props.questionSetName, id: props.id, name: questionName, description: description, optionA: optionA, optionB: optionB, optionC: optionC, optionD: optionD, answer: answer, hint: hint,feedback: feedback }
-    props.updateCurrentQuestion(questionInfo)
-  }
+  // function saveQuestion(){
+  //   var newQuestion = { 
+  //     name:"",
+  //     questionText:"",
+  //     answer: "",
+  //     feedback: "",
+  //     hint:"",
+  //     option:[optionA,optionB,optionC,optionD]
+  //   }
+  //   props.updateCurrentQuestion(newQuestion);
+  // }
 
 
   return (
-    <div
-    //   style={{
-    //     display: "flex",
-    //     alignItems: "center",
-    //     justifyContent: "center"
-    //   }}
-    >
-    <p>Question Name:</p>
-    <input onChange={updateQuestionName} type="text"></input>
+    <div className={props.index === props.currentQuestionIndex ? "": "hide"}>
+      <div className="question-element-box">
+        <p>Question Name:</p>
+        <input onChange={updateQuestionName} type="text" defaultValue={props.questions[props.currentQuestionIndex].name}></input>        
+      </div>
+      <div className="question-element-box2">
+        <p className="question-element-title">Description:</p>
+        <textarea rows="5" cols="40" onChange={updateDescription} type="text" defaultValue={props.questions[props.currentQuestionIndex].questionText}></textarea>        
+      </div>
 
-    <p>Description:</p>
-    <textarea rows="5" cols="30" onChange={updateDescription} type="text"></textarea>
-    <div>  
-        <p>Options</p> 
+      <div>  
+          <p className="question-element-title">Options</p> 
 
-        <div className="option">
-        <p>Option A</p>
-        <input onChange={updateOptionA} type="text"></input>
-        </div> 
+          <div className="option question-element-box">
+            <p>Option A: </p>
+            <input onChange={updateOptionA} type="text" defaultValue={props.questions[props.currentQuestionIndex].option[0]}></input>
+          </div> 
 
-        <div className="option">
-        <p>Option B</p>
-        <input onChange={updateOptionB} type="text"></input>
-        </div>
+          <div className="option question-element-box">
+          <p>Option B: </p>
+          <input onChange={updateOptionB} type="text" defaultValue={props.questions[props.currentQuestionIndex].option[1]}></input>
+          </div>
 
-        <div className="option">
-        <p>Option C</p>
-        <input onChange={updateOptionC} type="text"></input>
-        </div> 
+          <div className="option question-element-box">
+            <p>Option C: </p>
+            <input onChange={updateOptionC} type="text" defaultValue={props.questions[props.currentQuestionIndex].option[2]}></input>
+          </div> 
 
-        <div className="option">
-        <p>Option D</p>
-        <input onChange={updateOptionD} type="text"></input>
-        </div> 
-    
-    </div> 
+          <div className="option question-element-box">
+            <p>Option D: </p>
+            <input onChange={updateOptionD} type="text" defaultValue={props.questions[props.currentQuestionIndex].option[3]}></input>
+          </div> 
+      </div> 
 
-    <div>
-        <p>Answer</p>
-        <input onChange={updateAnswer} type="text"></input>
-    </div>
+      <div className="question-element-box">
+          <p> Answer:  </p>
+          <input className='answer-input' onChange={updateAnswer} type="text" defaultValue={props.questions[props.currentQuestionIndex].answer}></input>
+      </div>
 
+      <div className="question-element-box2">
+          <p className="question-element-title">Hint</p>
+          <textarea rows="5" cols="30" onChange={updateHint} type="text" defaultValue={props.questions[props.currentQuestionIndex].hint}></textarea>
+      </div>
 
-    <div>
-        <p>Hint</p>
-        <textarea rows="5" cols="30" onChange={updateHint} type="text"></textarea>
-    </div>
-
-    <div>
-        <p>Explanatory Feedback</p>
-        <textarea rows="5" cols="30" onChange={updateFeedback} type="text"></textarea>
-    </div>
-
-
-
-     
-
-    <button onClick={() => props.deleteItem(props.id)} >  <FaTrash
-        style={{ cursor: "pointer" }}
-        
-      /> Delete</button>
-
-
-
-      {/* <p style={{ marginLeft: "10px" }}>{props.text}</p> */}
-
-      <button onClick={saveQuestion} >Save</button>
-      <button >Edit</button>
-
+      <div className="question-element-box2">
+          <p className="question-element-title">Explanatory Feedback</p>
+          <textarea rows="5" cols="30" onChange={updateFeedback} type="text" defaultValue={props.questions[props.currentQuestionIndex].feedback}></textarea>
+      </div>
+      <div className="saveDeleteBtn-div">
+        <button className='element-btns delete-btn' onClick={() => props.deleteItem(props.currentQuestionIndex)} >  
+          <FaTrash style={{ cursor: "pointer" }}/> 
+          Delete
+        </button>   
+      </div>
 
     </div>
   );

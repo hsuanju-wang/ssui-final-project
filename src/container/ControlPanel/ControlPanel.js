@@ -12,7 +12,7 @@ const ControlPanel = (props) => {
     }
 
     return (
-        <div className="control-panel">
+        <div className="control-panel" style={{width: props.width}}>
             <div>
                 <h3>Explore effect on different group:</h3>
                 <div onChange={(e) => onChangeGroupValue(e)}>

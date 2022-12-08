@@ -39,7 +39,7 @@ const ResultViewPanel = (props) => {
   }, []);
 
     return (
-      <div className="resultPanel">
+      <div className="resultPanel" style={{width: props.width}}>
         <div className="title-container">
           {/* <h2>{props.dataGroup}</h2> */}
           <div className="legend">

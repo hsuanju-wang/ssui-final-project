@@ -35,19 +35,18 @@ const StudentPage = (props) => {
   return(
     <div className="student-home">
       <h1>Select the question set you want to take</h1>
-
+      <div className="question-container">
       { questions !== undefined && questions.map((q, index) => {
         return(
-          <div className="question-container">
             <div className="question-box">
-              <h2>Question set name // todo</h2>
+              <h2>{q.questionSetName}</h2>
               <h3>Instructor: {q.teacherName} </h3>
               <h3>{q.questions.length} Questions</h3>
               <button onClick={() => startBtnClicked(q)}>Start</button>
             </div>
-          </div> 
         )
-      })}     
+      })} 
+      </div>     
     </div>
 
   );
