@@ -220,7 +220,7 @@ const TeacherPage = (props) => {
         </div>
         {/* <ResultViewPanel
             threshold = {threshold}
-            dataGroup = {dataGroup}/>         */}
+            dataGroup = {dataGroup}/>        
   </div>
   );
 }
