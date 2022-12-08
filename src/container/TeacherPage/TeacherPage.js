@@ -137,10 +137,9 @@ const TeacherPage = (props) => {
             setDataGroup = {setDataGroup}
             setThreshold = {setThreshold}
             threshold = {threshold}/>
-          <AboutCompas/>
-        {/* <ResultViewPanel
+        <ResultViewPanel
             threshold = {threshold}
-            dataGroup = {dataGroup}/>         */}
+            dataGroup = {dataGroup}/>        
   </div>
   );
 }
