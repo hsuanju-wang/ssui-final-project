@@ -33,6 +33,9 @@ function App(props) {
   const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
+  useEffect(() => {
+    document.title = 'Perspective AI';
+  }, []);
 
   useEffect(() => {
     console.log("run useEffect");
