@@ -69,7 +69,7 @@ const ResultViewPanel = (props) => {
               }
             </div>
             { genderData !== undefined && props.dataGroup === "gender" &&
-              <div className="chart-container">console.log(d);
+              <div className="chart-container">
                 <BarChart
                     label = {["TP"]} 
                     data1 = {[genderData[props.threshold-1][6]]}
