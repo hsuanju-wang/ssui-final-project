@@ -4,10 +4,12 @@ import Papa from 'papaparse';
 import './ResultViewPanel.css'
 import GenderData from '../../assets/data/COMPAS-Score-Gender-gender.csv';
 import RaceData from '../../assets/data/COMPAS-Score-Race-race.csv';
+import AllData from '../../assets/data/COMPAS-Score-ALL-Sheet3.csv';
 
 const ResultViewPanel = (props) => {
   const [genderData, setGenderData] = useState(undefined);
   const [raceData, setRaceData] = useState(undefined);
+  const [allData, setAllData] = useState(undefined);
 
   const fetchCsv = (cvsData) => {
     return fetch(cvsData).then(function (response) {
@@ -36,6 +38,11 @@ const ResultViewPanel = (props) => {
       result.data.shift();
       setRaceData(result.data);
     });
+
+    getCsvData(AllData).then(result => {
+      result.data.shift();
+      setAllData(result.data);
+    });
   }, []);
 
     return (
@@ -43,15 +50,27 @@ const ResultViewPanel = (props) => {
         <div className="title-container">
           {/* <h2>{props.dataGroup}</h2> */}
           <div className="legend">
-            <div className="legendBar" id="type1LegendBar"></div>
-            <h4>{props.dataGroup==='gender'? "Female" : "African-American"}</h4>
+            { props.dataGroup !== 'all' &&
+              <div className="legendBar" id="type1LegendBar"></div>
+            }
+            <h4>{props.dataGroup==='gender'  
+                ? "Female" 
+                : props.dataGroup!=='all'
+                  ?"African-American"
+                  :""}</h4>
           </div>
           <div className="legend">
-            <div className="legendBar" id="type2LegendBar"></div>
-            <h4>{props.dataGroup==='gender'? "Male" : "Caucasian"}</h4>
+            { props.dataGroup !== 'all' &&
+              <div className="legendBar" id="type2LegendBar"></div>
+            }
+            <h4>{props.dataGroup==='gender'
+                 ? "Male" 
+                 : props.dataGroup!=='all'
+                  ?"Caucasian"
+                  :""}</h4>
           </div>
         </div>
-        <div className="container">
+        <div className="container firstContainer">
             <div className="title-box">
               <h3>True Positive</h3>
               <p> An outcome where the model correctly predicts the positive class</p>
@@ -65,6 +84,11 @@ const ResultViewPanel = (props) => {
                 <div>
                   <h2>{raceData[props.threshold-1][6]} / {raceData[props.threshold+9][6]}</h2>
                   <span>African-American/Caucasian</span>
+                </div>
+              }
+              { allData !== undefined && props.dataGroup === "all" &&
+                <div>
+                  <h2>{allData[props.threshold-1][4]} </h2>
                 </div>
               }
             </div>
@@ -93,6 +117,17 @@ const ResultViewPanel = (props) => {
                     data2 = {[raceData[props.threshold+9][9]]}/>
               </div>                 
             }
+            { allData !== undefined && props.dataGroup === "all" &&
+              <div className="chart-container">
+                {console.log(props.threshold)}
+                <BarChart
+                    label = {["TP"]} 
+                    data1 = {[allData[props.threshold-1][4]]}/>
+                <BarChart
+                    label = {["FN"]} 
+                    data1 = {[allData[props.threshold-1][7]]}/>
+              </div>                 
+            }
             <div className="title-box">
               <h3>False Negative</h3>
               <p> An outcome where the model incorrectly predicts the negative class</p>
@@ -106,6 +141,11 @@ const ResultViewPanel = (props) => {
                 <div>
                   <h2>{raceData[props.threshold-1][9]} / {raceData[props.threshold+9][9]}</h2>
                   <span>African-American/Caucasian</span>
+                </div>
+              }
+              { allData !== undefined && props.dataGroup === "all" &&
+                <div>
+                  <h2>{allData[props.threshold-1][7]} </h2>
                 </div>
               }
             </div>
@@ -125,6 +165,11 @@ const ResultViewPanel = (props) => {
                 <div>
                   <h2>{raceData[props.threshold-1][8]} / {raceData[props.threshold+9][8]}</h2>
                   <span>African-American/Caucasian</span>
+                </div>
+              }
+              { allData !== undefined && props.dataGroup === "all" &&
+                <div>
+                  <h2>{allData[props.threshold-1][6]} </h2>
                 </div>
               }
             </div>
@@ -154,6 +199,17 @@ const ResultViewPanel = (props) => {
               </div>            
             }
 
+            { allData !== undefined && props.dataGroup === "all" &&
+              <div className="chart-container">
+                <BarChart
+                    label = {["FP"]} 
+                    data1 = {[allData[props.threshold-1][6]]}/>
+                <BarChart
+                    label = {["TN"]} 
+                    data1 = {[allData[props.threshold-1][5]]}/>
+              </div>            
+            }
+
             <div className="title-box">
               <h3>True Negative</h3>
               <p> An outcome where the model correctly predicts the negative class.</p>
@@ -167,6 +223,11 @@ const ResultViewPanel = (props) => {
                 <div>
                   <h2>{raceData[props.threshold-1][7]} / {raceData[props.threshold+9][7]}</h2>
                   <span>African-American/Caucasian</span>
+                </div>
+              }
+              { allData !== undefined && props.dataGroup === "all" &&
+                <div>
+                  <h2>{allData[props.threshold-1][5]} </h2>
                 </div>
               }
             </div>

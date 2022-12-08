@@ -18,6 +18,7 @@ const AnswerQuestion = (props) => {
   async function uploadAnswerToDb(answer,score){
     let newStudentAnswer = {
         answer: answer,
+        questionSetName: location.state.selectedQuestion.questionSetName,
         questionId: location.state.selectedQuestion.id,
         score: score,
         studentId: props.currentUser.uid,
@@ -41,10 +42,12 @@ const AnswerQuestion = (props) => {
         <ControlPanel 
             setDataGroup = {setDataGroup}
             setThreshold = {setThreshold}
-            threshold = {threshold}/>
+            threshold = {threshold}
+            width = {"15%"}/>
         <ResultViewPanel
             threshold = {threshold}
-            dataGroup = {dataGroup}/>        
+            dataGroup = {dataGroup}
+            width = {"60%"}/>        
     </div>
   );
 }

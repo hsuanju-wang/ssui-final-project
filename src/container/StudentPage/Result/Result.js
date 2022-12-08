@@ -12,7 +12,7 @@ const Result = (props) => {
             props.studentResult.map((result) => {
                 return(
                     <div className="result-box">
-                        <h3>Question set name</h3>
+                        <h3>{result.questionSetName}</h3>
                         <h3>{result.teacherName}</h3>
                         <h3>{result.score}</h3>
                     </div>

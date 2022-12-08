@@ -7,7 +7,14 @@
 .title-container{
     justify-content: center;
     display: flex;
+    height: 40px;
 }
+
+.title-container h4{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 
 .title-container h2{
     margin-right: 10%;
@@ -55,4 +62,8 @@
 
 #type2LegendBar{
     background-color: rgba(53, 162, 235, 0.5);
+}
+
+.firstContainer{
+    margin-top: 2% !important;
 }

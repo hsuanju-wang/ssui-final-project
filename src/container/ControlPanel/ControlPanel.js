@@ -13,11 +13,12 @@ const ControlPanel = (props) => {
 
     return (
         <div className="control-panel" style={{width: props.width}}>
-            <div>
+            <div className="radio-input">
                 <h3>Explore effect on different group:</h3>
                 <div onChange={(e) => onChangeGroupValue(e)}>
                     <input type="radio" value="gender" name="group" defaultChecked/> Gender (Female / Male) <br></br>
-                    <input type="radio" value="race" name="group"/> Race (African-American / Caucasian)
+                    <input type="radio" value="race" name="group"/> Race (African-American / Caucasian) <br></br>
+                    <input type="radio" value="all" name="group"/> All
                 </div>
             </div>
             <div className="threshold-box">
