@@ -3,12 +3,26 @@ import { Routes, Route  } from "react-router-dom";
 import ListItem from "./ListItem";
 import ResultViewPanel from '../ResultViewPanel/ResultViewPanel';
 import ControlPanel from '../ControlPanel/ControlPanel';
+import AboutCompas from '../AboutCompas/AboutCompas'
+
+import { getAuth, signInWithPopup,signOut, GoogleAuthProvider} from "firebase/auth";
+import { collection, getDocs, getFirestore, addDoc, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
+import firebase from "firebase/compat/app"
+import "firebase/compat/auth"
+import "firebase/compat/firestore"
+
 
 import './TeacherPage.css'
 
 let globalItemCount = 0;
 
 const TeacherPage = (props) => {
+
+
+
+
+
+
   // Data Visualization =================
   const [threshold, setThreshold] = useState(5);
   const [dataGroup, setDataGroup] = useState("gender");
@@ -18,6 +32,9 @@ const TeacherPage = (props) => {
   const [listItems, setListItems] = useState([
     { name: "Question1", type: "", id: 0 }
   ]);
+
+  const [questionSetName, setQuestionSetName] = useState();
+
   const [questionSet, setQuestionSet] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState({});
 
@@ -52,6 +69,38 @@ const TeacherPage = (props) => {
     setListItems(tempListItems);
   }
 
+  function updateQuestionSetName(e) {
+    setQuestionSetName(e.currentTarget.value);
+
+    let tempSet = [...questionSet]
+    tempSet.forEach((q)=> {
+      q.questionSetName = questionSetName
+      // console.log(q)
+    })
+
+    // console.log(tempSet)
+    setQuestionSet(tempSet)
+  }
+
+  function publishQuestionSet(){
+    addDoc(collection(props.db, "Questions"), {
+      questionSet: questionSet,
+      teacherId: props.currentUser.uid,
+      teacherName: props.currentUser.displayName
+      
+    });
+
+    updateDoc()
+
+
+    console.log("finish!")
+    console.log(props.currentUser.uid)
+
+  }
+
+
+
+
   const questionSetComponents = listItems.map((item) => {
     return (
       <ListItem
@@ -59,6 +108,7 @@ const TeacherPage = (props) => {
         id={item.id}
         key={item.id}
         deleteItem={deleteItem}
+        questionSetName={questionSetName}
         updateCurrentQuestion={updateCurrentQuestion}
       />
     );
@@ -68,7 +118,17 @@ const TeacherPage = (props) => {
   return(
     <div className='main-container'>
         <div className='question-column'>
-            <h1>My Question Set</h1>
+
+          <div className="questionSet">
+          {/* <h1>Publish Question Set :</h1> */}
+            <h3>Your Question Set</h3>
+            <button onClick={publishQuestionSet} type="text">Publish Question Set</button>
+
+            <h5>Name of Question Set:</h5>
+            <input onChange={updateQuestionSetName} type="text"></input>
+          </div>
+
+
             {/* <input onChange={updateNewQuestion} type="text"></input> */}
             {questionSetComponents}
             <button onClick={createNewQuestion}>Add Multiple Choice Question</button>
@@ -77,9 +137,10 @@ const TeacherPage = (props) => {
             setDataGroup = {setDataGroup}
             setThreshold = {setThreshold}
             threshold = {threshold}/>
-        <ResultViewPanel
+          <AboutCompas/>
+        {/* <ResultViewPanel
             threshold = {threshold}
-            dataGroup = {dataGroup}/>        
+            dataGroup = {dataGroup}/>         */}
   </div>
   );
 }

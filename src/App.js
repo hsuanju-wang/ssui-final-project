@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Routes, Route, useNavigate  } from "react-router-dom";
 
 import { getAuth, signInWithPopup,signOut, GoogleAuthProvider} from "firebase/auth";
-import { collection, getDocs, getFirestore, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
+import { collection, getDocs, getFirestore, addDoc, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
 
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
@@ -53,6 +53,9 @@ function App(props) {
   }
   //End Of Login =============================
 
+
+  //Instructor Publish QuestionSet
+
   return (
     <div className="App">
 
@@ -81,7 +84,7 @@ function App(props) {
             }
 
             { currentUser !== undefined && currentUserStatus === 'teacher' &&
-                <Route path='/' element={<TeacherPage/>}> </Route>
+                <Route path='/' element={<TeacherPage db={db} currentUser={currentUser}/>}> </Route>
             }
             { currentUser !== undefined && currentUserStatus === 'student' &&
                 <Route path='/' element={<StudentPage db={db}/>}> </Route>
