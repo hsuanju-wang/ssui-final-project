@@ -217,10 +217,7 @@ const TeacherPage = (props) => {
               </div>
 
           }
-        </div>
-        {/* <ResultViewPanel
-            threshold = {threshold}
-            dataGroup = {dataGroup}/>        
+        </div>    
   </div>
   );
 }
