@@ -42,6 +42,7 @@ body > #root > div {
   height: 100vh;
 }
 
+
 html,body
 {
     width: 100%;
@@ -49,6 +50,19 @@ html,body
     margin: 0px;
     padding: 0px;
     overflow-x: hidden; 
-    overflow-y: scroll; 
+    font-family: Lato;
+}
+
+
+@font-face{
+  font-family: Lato;
+  src: url('./assets/font/Lato/Lato-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face{
+  font-family: Lato;
+  src: url('./assets/font/Lato/Lato-Black.ttf');
+  font-weight: bold;
 }
 

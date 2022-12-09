@@ -43,10 +43,6 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    console.log(teacherSelectedQuestion);
-  }, [teacherSelectedQuestion]);
-
-  useEffect(() => {
     if(currentUserStatus === 'student'){
       getStudentResult().then((d) => {
         let resultItem = d.docs.map((d) =>{
@@ -64,8 +60,6 @@ function App(props) {
           const id = d.id;
           return { id, ...data };
         });
-
-        console.log(resultItem);
         setTeacherQuestions(resultItem);
       });
     }

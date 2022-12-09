@@ -1,9 +1,10 @@
 import { useState, useEffect} from "react";
-import { Routes, Route, useLocation} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import EditListItem from "./EditListItem";
 import ResultViewPanel from '../../ResultViewPanel/ResultViewPanel';
 import ControlPanel from '../../ControlPanel/ControlPanel';
 import AboutCompas from '../AboutCompas/AboutCompas'
+import AllDataExplorePanel from "../../AllDataExplorePanel/AllDataExplorePanel";
 
 import { collection, doc, setDoc, updateDoc} from "firebase/firestore/lite";
 import "firebase/compat/auth"
@@ -17,6 +18,7 @@ const EditQuestion = (props) =>{
  const [threshold, setThreshold] = useState(5);
  const [dataGroup, setDataGroup] = useState("gender");
  // End of Data Visualization =============
+ const navigate = useNavigate();
 
  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
  const [isEnd, setIsEnd] = useState(false);
@@ -78,7 +80,6 @@ const EditQuestion = (props) =>{
      teacherName: props.currentUser.displayName
    };
    let dbRef = doc(props.db, "Questions", props.teacherSelectedQuestion.id); 
-   props.setNewTeacherQuestion(newDataSet);
    await updateDoc(dbRef, {
         questionSetName: props.teacherSelectedQuestion.questionSetName,
         questions: props.teacherSelectedQuestion.questions,
@@ -86,6 +87,8 @@ const EditQuestion = (props) =>{
         teacherName: props.currentUser.displayName
     });
    console.log(newDataSet);
+   props.setNewTeacherQuestion(newDataSet);
+   navigate('/');
  }
 
  function nextBtnClicked() {
@@ -118,9 +121,6 @@ const EditQuestion = (props) =>{
  
  return(
     <div className='main-container'>
-        {
-
-        }
         <div className='question-editor-container'>
 
           <div className="questionSetTitle">
@@ -171,25 +171,28 @@ const EditQuestion = (props) =>{
         </div>
         <div className="explore-data-containter">
           <div className="subNavBar">
-            <select name="cars" id="subNav" onChange={(e)=>navBarChange(e)}>
+            <select name="subNav" id="subNav" onChange={(e)=>navBarChange(e)}>
               <option value="about">About</option>
               <option value="dataExplore">Data explore</option>
+              <option value="thresholdExplore">Threshold explore</option>
             </select>
           </div>
-          { navBar === 'about'
-            ? <AboutCompas/>
-            : <div className="explore-data-page">
-                <ControlPanel 
-                    setDataGroup = {setDataGroup}
-                    setThreshold = {setThreshold}
-                    threshold = {threshold}
-                    width= {"25%"}/>                  
-                  <ResultViewPanel
-                      threshold = {threshold}
-                      dataGroup = {dataGroup}
-                      width= {"80%"}/>                   
-              </div>
-
+          { navBar === 'about' && <AboutCompas/>}
+          { navBar === 'thresholdExplore' &&
+            <div className="explore-data-page">
+              <ControlPanel 
+                  setDataGroup = {setDataGroup}
+                  setThreshold = {setThreshold}
+                  threshold = {threshold}
+                  width= {"25%"}/>                  
+              <ResultViewPanel
+                  threshold = {threshold}
+                  dataGroup = {dataGroup}
+                  width= {"80%"}/>                   
+            </div>
+          }
+          { navBar === 'dataExplore' &&
+              <AllDataExplorePanel/>                   
           }
         </div>    
   </div>    
