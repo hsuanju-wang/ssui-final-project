@@ -1,6 +1,6 @@
 @font-face {
     font-family: HeaderTitleFont;
-    src: url('../../assets/font/Acme-Regular.ttf');
+    src: url('../../assets/font/Josefin_Sans/static/JosefinSans-Bold.ttf');
 }
 
 .navigation {
@@ -21,6 +21,8 @@
 
 .header h2{
     font-family: HeaderTitleFont;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .navLink {
