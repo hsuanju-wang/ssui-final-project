@@ -83,6 +83,11 @@
 
 .addQuestion-btn:hover{
     cursor: pointer;
+    background-color: rgb(180, 180, 180);
+}
+
+.addQuestion-btn:hover{
+    cursor: pointer;
 }
 
 .nextBackBtn-box{
@@ -101,6 +106,10 @@
     width: 80px;
 }
 
+.nextBackBtn:hover{
+    cursor: pointer;
+    background-color: rgb(180, 180, 180);
+}
 .noneBtn{
     border: 1px solid white;
     border-radius: 3px;

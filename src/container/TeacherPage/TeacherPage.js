@@ -43,11 +43,6 @@ const TeacherPage = (props) => {
   const [isFront, setIsFront] = useState(false);
   const [navBar, setNavBar] = useState("about");
 
-  // useEffect(() => {
-  //   console.log("run effect teacher");
-  //   createNewQuestion();
-  // }, []);
-
   useEffect(() => {
     checkNextBackBtn();
   }, [currentQuestionIndex]);
@@ -88,12 +83,9 @@ const TeacherPage = (props) => {
   }
 
   function deleteItem(index) {
-    console.log("delete");
-    console.log(index);
-    let tempQuestions = questions;
-    tempQuestions.splice(index,1);
-    console.log(tempQuestions);
 
+    let tempQuestions = [...questions];
+    tempQuestions.splice(index,1);
     if(index === questions.length-1){
       setCurrentQuestionIndex(currentQuestionIndex-1);
     }
