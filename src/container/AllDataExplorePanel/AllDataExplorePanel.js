@@ -53,7 +53,7 @@ const AllDataExplorePanel = (props) => {
     }
   
     return(
-        <div>
+        <div style={{width: "100%"}}>
             <div>
                 <div onChange={(e) => onChangeTypeValue(e)} style={{display:"flex", justifyContent:"flex-end", paddingRight: "5%"}}>
                     <input type="radio" value="bar" name="group"  defaultChecked/> Bar Chart

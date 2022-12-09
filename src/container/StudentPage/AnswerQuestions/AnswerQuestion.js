@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import ResultViewPanel from '../../ResultViewPanel/ResultViewPanel';
 import ControlPanel from '../../ControlPanel/ControlPanel';
 import QuestionPanel from '../QuestionPanel/QuestionPanel';
+import AllDataExplorePanel from '../../AllDataExplorePanel/AllDataExplorePanel';
 import { collection, getDocs, getFirestore, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
 
 import './AnswerQuestion.css'
@@ -11,6 +12,7 @@ const AnswerQuestion = (props) => {
   const [threshold, setThreshold] = useState(5);
   const [dataGroup, setDataGroup] = useState("gender");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [mode, setMode] = useState("exploreData");
 
   const location = useLocation();
   let dbRef = doc(collection(props.db, "StudentAnswers")); 
@@ -42,12 +44,23 @@ const AnswerQuestion = (props) => {
         <ControlPanel 
             setDataGroup = {setDataGroup}
             setThreshold = {setThreshold}
+            setMode={setMode}
+            mode={mode} 
             threshold = {threshold}
+            currentUserStatus={props.currentUserStatus} 
             width = {"15%"}/>
-        <ResultViewPanel
-            threshold = {threshold}
-            dataGroup = {dataGroup}
-            width = {"60%"}/>        
+        { mode === 'exploreData' &&
+          <div style={{width: "60%"}}>
+            <AllDataExplorePanel/>
+          </div> 
+        }
+        {mode === 'exploreThreshold'&&
+          <ResultViewPanel
+              threshold = {threshold}
+              dataGroup = {dataGroup}
+              width = {"60%"}/> 
+        }
+       
     </div>
   );
 }

@@ -108,17 +108,20 @@ function App(props) {
             <Route path='/result' element={<Result studentResult={studentResult}/>}> </Route>
             <Route path='/answerQuestion' element={<AnswerQuestion 
                                                         db={db} 
-                                                        currentUser={currentUser} 
+                                                        currentUser={currentUser}
+                                                        currentUserStatus={currentUserStatus}  
                                                         setNewStudentAnswer={setNewStudentAnswer}/>}> </Route> 
             <Route path='/editQuestion' element={<EditQuestion 
                                                         db={db} 
                                                         currentUser={currentUser}
+                                                        currentUserStatus={currentUserStatus} 
                                                         setTeacherSelectedQuestion={setTeacherSelectedQuestion}
                                                         setNewTeacherQuestion={setNewTeacherQuestion}
                                                         teacherSelectedQuestion={teacherSelectedQuestion}/>}> </Route>
             <Route path='/newQuestion' element={<NewQuestion 
                                                         db={db} 
                                                         currentUser={currentUser}
+                                                        currentUserStatus={currentUserStatus} 
                                                         setNewTeacherQuestion={setNewTeacherQuestion}/>}> </Route>              
             <Route path='/login' 
                    element={<Login

@@ -17,6 +17,7 @@ const NewQuestion = (props) =>{
  // Data Visualization =================
  const [threshold, setThreshold] = useState(5);
  const [dataGroup, setDataGroup] = useState("gender");
+ const [mode, setMode] = useState("exploreThreshold");
  // End of Data Visualization =============
  const navigate = useNavigate();
  const [questionSetName, setQuestionSetName] = useState(undefined);
@@ -180,7 +181,10 @@ const NewQuestion = (props) =>{
               <ControlPanel 
                   setDataGroup = {setDataGroup}
                   setThreshold = {setThreshold}
+                  setMode={setMode}
+                  mode={mode} 
                   threshold = {threshold}
+                  currentUserStatus={props.currentUserStatus} 
                   width= {"25%"}/>                  
               <ResultViewPanel
                   threshold = {threshold}
