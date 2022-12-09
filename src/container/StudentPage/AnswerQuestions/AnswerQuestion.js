@@ -50,7 +50,7 @@ const AnswerQuestion = (props) => {
             currentUserStatus={props.currentUserStatus} 
             width = {"15%"}/>
         { mode === 'exploreData' &&
-          <div style={{width: "60%"}}>
+          <div style={{width: "60%", paddingTop: "20px"}}>
             <AllDataExplorePanel/>
           </div> 
         }
