@@ -1,146 +1,23 @@
-.main-container{
-    display: flex;
-    height: 80%;
-    width: 100%;
-    padding: 0 2%;
-}
-
-.explore-data-containter{
-    width:69%;
-    margin-left: 10px;
-}
-  
-.question-editor-container{
-    width:30%;
-    height: 100%;
-}
-
-.question-edit-box{
-    border: 1px solid rgb(219, 219, 219);
-    padding: 10px 20px 10px 20px;
-    margin-top: 2px;
-}
-
-.questionSetTitle{
-    display: flex;
-    justify-content: space-between;
-}
-
-.questionSetPublishBtn{
-    border: 1px solid rgb(0, 153, 255);
-    border-radius: 3px;
-    background-color: rgb(0, 153, 255);
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.editor-panel{
+.add-question-box{
+    float: left;
+    width: 25%;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    padding: 3% 5% 5% 5%;
-    overflow: scroll;
-    height: 90%;
+    margin: 2% 2.5%;
+    padding: 3% 0;
+    text-align: center;
+    height: 140px;
+    display: table;
 }
 
-.qustionSet-name-box{
-    display: flex;
-    justify-content: center;
-}
-
-.qustionSet-name-box input{
-    height: 25px;
-    margin-top: auto;
-    margin-bottom: auto;
-    border: 1px solid rgb(226, 228, 240);
-    background-color: rgb(226, 228, 240);
-    border-radius: 3px;
-}
-
-.qustionSet-name-box h5{
-    margin: 10px;
-    color: grey;
-}
-
-.total-question-box{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-}
-
-.total-question-box h5{
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-}
-
-.addQuestion-btn{
-    border: 1px solid rgb(159, 159, 159);
-    border-radius: 3px;
-    background-color: grey;
-    color: white; 
-    margin: 0px;
-}
-
-.addQuestion-btn:hover{
+.add-question-box:hover{
     cursor: pointer;
-    background-color: rgb(180, 180, 180);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.269);
 }
 
-.addQuestion-btn:hover{
-    cursor: pointer;
-}
-
-.nextBackBtn-box{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-}
-
-.nextBackBtn{
-    border: 1px solid rgb(159, 159, 159);
-    border-radius: 3px;
-    background-color: grey;
-    color: white; 
-    margin: 0px;
-    padding: 6px;
-    width: 80px;
-}
-
-.nextBackBtn:hover{
-    cursor: pointer;
-    background-color: rgb(180, 180, 180);
-}
-.noneBtn{
-    border: 1px solid white;
-    border-radius: 3px;
-    background-color: white;
-    color: white; 
-    margin: 0px;
-    padding: 6px;
-    width: 80px;
-}
-
-.subNavBar{
-    width: 90%;
-    height: 30px;
-    padding: 2% 5% 2% 5%;
-}
-
-.subNavBar select{
-    float: right;
-    font-size: 18px;
-    border: 1px solid grey;
-    border-radius: 3px;
-    background-color: grey;
-    color: white;
-    padding: 3px;
-    width: 30%;
-}
-
-img{
-    width: 100%;
-}
-
-.explore-data-page{
-    display: flex;
+.add-question-box h2{
+    display: table-cell;
+    vertical-align: middle;
+    margin: auto;
+    font-size: 50px;
+    font-weight: normal;
 }

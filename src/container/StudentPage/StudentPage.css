@@ -25,6 +25,8 @@ width: 20%;
     margin: 2% 2.5%;
     padding: 3% 0;
     text-align: center;
+    height: 140px;
+    overflow-y: hidden;
 }
 
 .question-box:hover{

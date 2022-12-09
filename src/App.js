@@ -19,13 +19,18 @@ import TeacherPage from './container/TeacherPage/TeacherPage';
 import StudentPage from './container/StudentPage/StudentPage';
 import AnswerQuestion from './container/StudentPage/AnswerQuestions/AnswerQuestion';
 import Result from './container/StudentPage/Result/Result';
+import EditQuestion from './container/TeacherPage/EditQuestion/EditQuestion';
+import NewQuestion from './container/TeacherPage/EditQuestion/NewQuestion';
 
 function App(props) {
   const [currentUser, setCurrentUser] = useState(undefined); 
   const [currentUserStatus, setCurrentUserStatus] = useState(undefined); // teacher or student
 
   const [studentResult, setStudentResult] = useState(undefined);
+  const [teacherQuestions, setTeacherQuestions] = useState(undefined);
+  const [teacherSelectedQuestion, setTeacherSelectedQuestion] = useState(undefined);
   const [newStudentAnswer, setNewStudentAnswer] = useState([]);  
+  const [newTeacherQuestion, setNewTeacherQuestion] = useState([]);  
 
   // Backend stuff
   const db = getFirestore(props.app);
@@ -38,7 +43,10 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    console.log("run useEffect");
+    console.log(teacherSelectedQuestion);
+  }, [teacherSelectedQuestion]);
+
+  useEffect(() => {
     if(currentUserStatus === 'student'){
       getStudentResult().then((d) => {
         let resultItem = d.docs.map((d) =>{
@@ -46,11 +54,22 @@ function App(props) {
           const id = d.id;
           return { id, ...data };
         });
-        console.log(resultItem);
         setStudentResult(resultItem);
       });
     }
-  }, [currentUser, newStudentAnswer]);
+    else if(currentUserStatus === 'teacher'){
+      getTeacherQuestions().then((d) => {
+        let resultItem = d.docs.map((d) =>{
+          const data = d.data();
+          const id = d.id;
+          return { id, ...data };
+        });
+
+        console.log(resultItem);
+        setTeacherQuestions(resultItem);
+      });
+    }
+  }, [currentUser, newStudentAnswer, newTeacherQuestion]);
 
   // LogIn ===================================
   function logIn(){
@@ -79,6 +98,12 @@ function App(props) {
     return await getDocs(q);
   }
 
+  async function getTeacherQuestions(){
+    const col = collection(db, "Questions");
+    const q = query(col, where("teacherId", "==", currentUser.uid));
+    return await getDocs(q);
+  }
+
   return (
     <div className="App">
 
@@ -90,7 +115,17 @@ function App(props) {
             <Route path='/answerQuestion' element={<AnswerQuestion 
                                                         db={db} 
                                                         currentUser={currentUser} 
-                                                        setNewStudentAnswer={setNewStudentAnswer}/>}> </Route>
+                                                        setNewStudentAnswer={setNewStudentAnswer}/>}> </Route> 
+            <Route path='/editQuestion' element={<EditQuestion 
+                                                        db={db} 
+                                                        currentUser={currentUser}
+                                                        setTeacherSelectedQuestion={setTeacherSelectedQuestion}
+                                                        setNewTeacherQuestion={setNewTeacherQuestion}
+                                                        teacherSelectedQuestion={teacherSelectedQuestion}/>}> </Route>
+            <Route path='/newQuestion' element={<NewQuestion 
+                                                        db={db} 
+                                                        currentUser={currentUser}
+                                                        setNewTeacherQuestion={setNewTeacherQuestion}/>}> </Route>              
             <Route path='/login' 
                    element={<Login
                                 logIn = {logIn}
@@ -110,7 +145,7 @@ function App(props) {
             }
 
             { currentUser !== undefined && currentUserStatus === 'teacher' &&
-                <Route path='/' element={<TeacherPage db={db} currentUser={currentUser}/>}> </Route>
+                <Route path='/' element={<TeacherPage teacherQuestions={teacherQuestions} setTeacherSelectedQuestion={setTeacherSelectedQuestion}/>}> </Route>
             }
             { currentUser !== undefined && currentUserStatus === 'student' &&
                 <Route path='/' element={<StudentPage db={db}/>}> </Route>

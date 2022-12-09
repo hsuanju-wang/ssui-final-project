@@ -1,7 +1,7 @@
 import './AboutCompas.css'
-import howCompasWork from'../../assets/images/howCompasWork.png'
-import threshold from "../../assets/images/Threshold.png"
-import typofPrediction from "../../assets/images/TypeofPrediction.png"
+import howCompasWork from'../../../assets/images/howCompasWork.png'
+import threshold from "../../../assets/images/Threshold.png"
+import typofPrediction from "../../../assets/images/TypeofPrediction.png"
 
 const AboutCompas = () => {
     
