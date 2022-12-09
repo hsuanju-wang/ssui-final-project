@@ -38,7 +38,7 @@ const StudentPage = (props) => {
       <div className="question-container">
       { questions !== undefined && questions.map((q, index) => {
         return(
-            <div className="question-box">
+            <div className="question-box" onClick={() => startBtnClicked(q)}>
               <h2>{q.questionSetName}</h2>
               <h3>Instructor: {q.teacherName} </h3>
               <h3>{q.questions.length} Questions</h3>

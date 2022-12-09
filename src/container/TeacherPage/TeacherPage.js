@@ -27,7 +27,7 @@ const TeacherPage = (props) => {
       <div className="question-container">
       { props.teacherQuestions!==undefined && props.teacherQuestions.map((q, index) => {
         return(
-            <div className="question-box">
+            <div className="teacher-question-box" onClick={() => editBtnClicked(q)}>
               <h2>{q.questionSetName}</h2>
               <h3>{q.questions.length} Questions</h3>
               <button onClick={() => editBtnClicked(q)}>Edit</button>

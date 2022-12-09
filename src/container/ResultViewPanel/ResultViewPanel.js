@@ -45,6 +45,37 @@ const ResultViewPanel = (props) => {
     });
   }, []);
 
+  function TopBarCharts(p){
+    return(
+      <div className="chart-container">
+        <BarChart
+            label = {["TP"]}
+            data1 = {[p.data[props.threshold-1][6]]}
+            data2 = {[p.data[props.threshold+9][6]]}/>
+        <BarChart
+            label = {["FN"]} 
+            data1 = {[p.data[props.threshold-1][9]]}
+            data2 = {[p.data[props.threshold+9][9]]}/>
+      </div>       
+    )
+  }  
+  
+  function DownBarCharts(p){
+    return(
+      <div className="chart-container">
+          <BarChart
+              label = {["FP"]} 
+              data1 = {[p.data[props.threshold-1][8]]}
+              data2 = {[p.data[props.threshold+9][8]]}/>
+          <BarChart
+              label = {["TN"]} 
+              data1 = {[p.data[props.threshold-1][7]]}
+              data2 = {[p.data[props.threshold+9][7]]}/>
+      </div>       
+    )
+  }
+
+
     return (
       <div className="resultPanel" style={{width: props.width}}>
         <div className="title-container">
@@ -93,29 +124,10 @@ const ResultViewPanel = (props) => {
               }
             </div>
             { genderData !== undefined && props.dataGroup === "gender" &&
-              <div className="chart-container">
-                <BarChart
-                    label = {["TP"]} 
-                    data1 = {[genderData[props.threshold-1][6]]}
-                    data2 = {[genderData[props.threshold+9][6]]}/>
-                <BarChart
-                    label = {["FN"]} 
-                    data1 = {[genderData[props.threshold-1][9]]}
-                    data2 = {[genderData[props.threshold+9][9]]}/>
-              </div>                 
+                <TopBarCharts data={genderData}/>              
             }
             { raceData !== undefined && props.dataGroup === "race" &&
-              <div className="chart-container">
-                {console.log(props.threshold)}
-                <BarChart
-                    label = {["TP"]} 
-                    data1 = {[raceData[props.threshold-1][6]]}
-                    data2 = {[raceData[props.threshold+9][6]]}/>
-                <BarChart
-                    label = {["FN"]} 
-                    data1 = {[raceData[props.threshold-1][9]]}
-                    data2 = {[raceData[props.threshold+9][9]]}/>
-              </div>                 
+                <TopBarCharts data={raceData}/>               
             }
             { allData !== undefined && props.dataGroup === "all" &&
               <div className="chart-container">
@@ -174,29 +186,11 @@ const ResultViewPanel = (props) => {
               }
             </div>
             { genderData !== undefined && props.dataGroup === "gender" &&
-              <div className="chart-container">
-                <BarChart
-                    label = {["FP"]} 
-                    data1 = {[genderData[props.threshold-1][8]]}
-                    data2 = {[genderData[props.threshold+9][8]]}/>
-                <BarChart
-                    label = {["TN"]} 
-                    data1 = {[genderData[props.threshold-1][7]]}
-                    data2 = {[genderData[props.threshold+9][7]]}/>
-              </div>            
+              <DownBarCharts data={genderData}/>            
             }
 
             { raceData !== undefined && props.dataGroup === "race" &&
-              <div className="chart-container">
-                <BarChart
-                    label = {["FP"]} 
-                    data1 = {[raceData[props.threshold-1][8]]}
-                    data2 = {[raceData[props.threshold+9][8]]}/>
-                <BarChart
-                    label = {["TN"]} 
-                    data1 = {[raceData[props.threshold-1][7]]}
-                    data2 = {[raceData[props.threshold+9][7]]}/>
-              </div>            
+              <DownBarCharts data={raceData}/>           
             }
 
             { allData !== undefined && props.dataGroup === "all" &&

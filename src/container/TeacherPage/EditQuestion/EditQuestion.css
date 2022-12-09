@@ -1,9 +1,4 @@
-.main-container{
-    display: flex;
-    height: 80%;
-    width: 100%;
-    padding: 0 2%;
-}
+
 
 .explore-data-containter{
     width:69%;
@@ -35,11 +30,17 @@
     margin-bottom: 10px;
 }
 
+.questionSetPublishBtn:hover{
+    border: 1px solid rgb(90, 189, 255);
+    background-color: rgb(90, 189, 255);
+    cursor: pointer;
+}
+
 .editor-panel{
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     padding: 3% 5% 5% 5%;
     overflow: scroll;
-    height: 90%;
+    height: 85%;
 }
 
 .qustionSet-name-box{
@@ -84,11 +85,9 @@
 .addQuestion-btn:hover{
     cursor: pointer;
     background-color: rgb(180, 180, 180);
+    border-color: rgb(180, 180, 180);
 }
 
-.addQuestion-btn:hover{
-    cursor: pointer;
-}
 
 .nextBackBtn-box{
     display: flex;
@@ -109,7 +108,9 @@
 .nextBackBtn:hover{
     cursor: pointer;
     background-color: rgb(180, 180, 180);
+    border: 1px solid rgb(180, 180, 180);
 }
+
 .noneBtn{
     border: 1px solid white;
     border-radius: 3px;
@@ -143,4 +144,5 @@ img{
 
 .explore-data-page{
     display: flex;
+    overflow-y: scroll;
 }

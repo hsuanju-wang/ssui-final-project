@@ -12,6 +12,7 @@
 
 .logInBtn:hover{
     background-color: rgb(231, 231, 231);
+    cursor: pointer;
 }
 
 .logInBtn img{
@@ -64,8 +65,9 @@
 }
 
 .status-login-box button:hover{
+    border: 2px solid rgb(221, 221, 221); 
     background-color: rgb(221, 221, 221); 
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 .status-description{

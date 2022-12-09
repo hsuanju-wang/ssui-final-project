@@ -3,7 +3,6 @@ import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
 const BarChart = (props) => {
-    //const labels = ["January", "February", "March", "April", "May", "June"];
     const options  = {
         maintainAspectRatio: false, 
         plugins:{
@@ -33,8 +32,8 @@ const BarChart = (props) => {
         ],
     };
     return (
-      <div style={{width: "45%", height: "300px"}}>
-        <Bar data={data} options ={options} height={"300px"}/>
+      <div style={{width: "45%", height: "280px"}}>
+        <Bar data={data} options ={options} height={"280px"}/>
       </div>
     );   
 }
