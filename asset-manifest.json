@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ssui-final-project/static/css/main.01712ac8.css",
-    "main.js": "/ssui-final-project/static/js/main.2d8c1e9c.js",
+    "main.js": "/ssui-final-project/static/js/main.e9514f39.js",
     "static/js/787.54bdd5c9.chunk.js": "/ssui-final-project/static/js/787.54bdd5c9.chunk.js",
     "static/media/Lato-Regular.ttf": "/ssui-final-project/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
     "static/media/Lato-Bold.ttf": "/ssui-final-project/static/media/Lato-Bold.636be8de934918e38ed9.ttf",
@@ -18,11 +18,11 @@
     "static/media/totalRace.csv": "/ssui-final-project/static/media/totalRace.53705115fd6ff4909bcc.csv",
     "static/media/totalGender.csv": "/ssui-final-project/static/media/totalGender.11c8cb24aa1ef703f88e.csv",
     "main.01712ac8.css.map": "/ssui-final-project/static/css/main.01712ac8.css.map",
-    "main.2d8c1e9c.js.map": "/ssui-final-project/static/js/main.2d8c1e9c.js.map",
+    "main.e9514f39.js.map": "/ssui-final-project/static/js/main.e9514f39.js.map",
     "787.54bdd5c9.chunk.js.map": "/ssui-final-project/static/js/787.54bdd5c9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.01712ac8.css",
-    "static/js/main.2d8c1e9c.js"
+    "static/js/main.e9514f39.js"
   ]
 }
