@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# SSUI Final Project : Perpective 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Installation Guide
 
-In the project directory, you can run:
+Clone the repo and run:
 
-### `npm start`
+### `npm install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+to install all the packages used in the project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## View it on Github Page
 
-### `npm test`
+Github Page: https://hsuanju-wang.github.io/ssui-final-project/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+##  Project Introduction
+In the educational context, Interactive visualization can help learners to simulate and observe the relationship between multiple variables. While teachers often use interactive visualizations as a hook to engage learners in a lecture, we think that interactive visualizations could also be leveraged in formative assessments. Interactive visualizations can provide precious hands-on opportunities or evaluate procedural skills often ignored in standardized tests. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+However, although there are some interactive visualizations for instructors online, we found that few tools can integrate assessment and interactive visualizations. As a result, when teachers want to authorize assessments with interactive visualizations, they might need to build their questions in tools like google forms and send students the link to the visualization. Students have to frequently switch between the visualization to see the questions in google forms and try to solve them on the visualization, which causes extraneous cognitive load that does not benefit learning.Therefore, we decided to develop a platform that integrates interactive visualization and assessments.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Implementation & User Manual:
+https://drive.google.com/file/d/1htsKk5pe2ZFPnwcpnNIi8Zr4tSZeXQkQ/view?usp=sharing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
