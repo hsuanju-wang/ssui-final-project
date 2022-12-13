@@ -39,7 +39,7 @@ function App(props) {
 
   const navigate = useNavigate();
   useEffect(() => {
-    document.title = 'Perspective AI';
+    document.title = 'Perspective';
   }, []);
 
   useEffect(() => {
