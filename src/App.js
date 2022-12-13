@@ -4,7 +4,7 @@ import { useState, useEffect} from "react";
 import { Routes, Route, useNavigate} from "react-router-dom";
 
 import { getAuth, signInWithPopup,signOut, GoogleAuthProvider} from "firebase/auth";
-import { collection, getDocs, getFirestore, addDoc, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
+import { collection, getDocs, getFirestore, doc, setDoc, serverTimestamp, query, where, updateDoc, deleteDoc} from "firebase/firestore/lite";
 
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
