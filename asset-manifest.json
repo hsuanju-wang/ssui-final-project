@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/ssui-final-project/static/css/main.01712ac8.css",
+    "main.js": "/ssui-final-project/static/js/main.30015176.js",
+    "static/js/787.54bdd5c9.chunk.js": "/ssui-final-project/static/js/787.54bdd5c9.chunk.js",
+    "static/media/Lato-Regular.ttf": "/ssui-final-project/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
+    "static/media/Lato-Bold.ttf": "/ssui-final-project/static/media/Lato-Bold.636be8de934918e38ed9.ttf",
+    "static/media/Lato-Black.ttf": "/ssui-final-project/static/media/Lato-Black.57dee8aface5572f9101.ttf",
+    "static/media/JosefinSans-Bold.ttf": "/ssui-final-project/static/media/JosefinSans-Bold.a3a7c833253b917d3b74.ttf",
+    "static/media/TypeofPrediction.png": "/ssui-final-project/static/media/TypeofPrediction.0676f20302008e056b67.png",
+    "static/media/howCompasWork.png": "/ssui-final-project/static/media/howCompasWork.e2f4d233620b6e131703.png",
+    "static/media/logo.svg": "/ssui-final-project/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/COMPAS-Score-Race-race.csv": "/ssui-final-project/static/media/COMPAS-Score-Race-race.a544f4be0af2f9caa67d.csv",
+    "static/media/COMPAS-Score-Gender-gender.csv": "/ssui-final-project/static/media/COMPAS-Score-Gender-gender.bbdc688d94d141eaa979.csv",
+    "index.html": "/ssui-final-project/index.html",
+    "static/media/COMPAS-Score-ALL-Sheet3.csv": "/ssui-final-project/static/media/COMPAS-Score-ALL-Sheet3.548f02d8e942fd152f0b.csv",
+    "static/media/totalAge.csv": "/ssui-final-project/static/media/totalAge.5ddc631bb19d0dd7ba5a.csv",
+    "static/media/totalRace.csv": "/ssui-final-project/static/media/totalRace.53705115fd6ff4909bcc.csv",
+    "static/media/totalGender.csv": "/ssui-final-project/static/media/totalGender.11c8cb24aa1ef703f88e.csv",
+    "main.01712ac8.css.map": "/ssui-final-project/static/css/main.01712ac8.css.map",
+    "main.30015176.js.map": "/ssui-final-project/static/js/main.30015176.js.map",
+    "787.54bdd5c9.chunk.js.map": "/ssui-final-project/static/js/787.54bdd5c9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.01712ac8.css",
+    "static/js/main.30015176.js"
+  ]
+}
