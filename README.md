@@ -10,6 +10,10 @@ Clone the repo and run:
 
 to install all the packages used in the project
 
+### `npm start`
+
+to run the projects
+
 ##  Project Introduction
 In the educational context, Interactive visualization can help learners to simulate and observe the relationship between multiple variables. While teachers often use interactive visualizations as a hook to engage learners in a lecture, we think that interactive visualizations could also be leveraged in formative assessments. Interactive visualizations can provide precious hands-on opportunities or evaluate procedural skills often ignored in standardized tests. 
 
